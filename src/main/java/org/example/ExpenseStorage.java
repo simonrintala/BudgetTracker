@@ -11,6 +11,17 @@ import java.util.HashMap;
 
 public class ExpenseStorage {
     private HashMap<Integer, HashMap<Integer, Expense>> userExpenses = new HashMap<>();
+/*använde mig av "nested" hashmap, när jag försökte lista ut hur jag skulle länka/lagra samman en int med t.ex ID fast i en
+annan hashmap, kollade mycket på den här sidan, https://www.baeldung.com/java-nested-hashmaps och även på stackoverflow
+när det kom till errors jag fick när jag skapa de och hur man "ska" använda de.
+
+Använde mig en mycket utav enhanced for loop efter att du visat det på kod genomgångar och tycker det ser snyggt
+ut och fungerar bra. Tycker det är lite svårt att få de att fungera ibland och jobbigare att läsa koden för mig i alla fall
+
+Använde mig en del av ternary operator också efter jag kollat igen på videos på Klaar och det räddade många timmar
+utav tänkande för innan blev min kod väldigt lång för samma uppgift som ternary gjorde.
+*/
+
 
     public void loadFile(String filename) {
 
@@ -20,7 +31,7 @@ public class ExpenseStorage {
             System.out.println("File is empty");
             return;
         }
-
+        //Nästan exakt tagit från ditt exempel gson_typetoken på github
         try (Reader reader = new FileReader(filename)) {
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
             Type type = new TypeToken<HashMap<Integer, HashMap<Integer, Expense>>>(){}.getType();
@@ -43,15 +54,14 @@ public class ExpenseStorage {
     public void addExpense(int userID, Expense expense) {
         userExpenses.putIfAbsent(userID, new HashMap<>());
         userExpenses.get(userID).put(expense.hashCode(), expense);
-    } /*skapar en ny utgift ifrån HashMap och generar ett ID för denna transaktionen */
+    } /*skapar/lägger en ny utgift & id i en HashMap för denna transaktionen */
 
     public void removeExpense(int userID, int expenseID) {
-        HashMap<Integer, Expense> expenses = userExpenses.get(userID);
-        if (expenses != null) {
-            expenses.remove(expenseID);
+        HashMap<Integer, Expense> expense1 = userExpenses.get(userID);
+        if (expense1 != null) {
+            expense1.remove(expenseID);
         }
-    } /*ta bort en existerade utgift ifrån HashMapen m.h.a expenseID alltså ett ID som varje transaktion har i
-     detta systemet*/
+    } /*ta bort en existerade utgift ifrån HashMapen m.h.a expenseID */
 
     public void listExpense(int userID) {
         HashMap<Integer, Expense> expenses = userExpenses.get(userID);
@@ -76,7 +86,9 @@ public class ExpenseStorage {
         if (expense1 != null && expense1.containsKey(editExpense.hashCode())) {
             expense1.put(editExpense.hashCode(), editExpense);
         }
-    }/*ändra utgift / skriv över nuvarande värde (FUNGERAR EJ)*/
+    }/*ändra utgift / skriv över nuvarande värde. Denna hade jag jättemycket problem med då jag aldrig fick den
+    att fungera. vet inte om det var tack vare "fel" i denna metoden eller om det var att jag skrivit fel i menyn
+    på editexpense i min switch i Main.*/
 
     public double totalBudget(int userID) {
         double budget = 0;

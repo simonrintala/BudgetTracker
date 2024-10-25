@@ -10,7 +10,7 @@ public class User {
         this.userID = idCounter++;
         this.firstName = firstName;
         this.lastName = lastName;
-    } //vilkor för att skapa en user (ej i användning, hårkodat atm) FIX!!!!
+    } //vilkor för att skapa en user (ej i användning, hårkodat)!!!!
 
     public int getUserID() {
         return userID;

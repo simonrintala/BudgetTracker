@@ -91,4 +91,4 @@ public class IncomeStorage {
         return budget;
         }
     }
-    /*incomestorage är inprincip likadan som expensestorage*/
+    /*incomestorage är inprincip likadan som expensestorage där har jag de flesta kommentarer*/

@@ -3,11 +3,18 @@ package org.example;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+/*IntelliJ "hälp/föreslagna" kod hjälpte mig mycket i denna uppgiften. speciellt i meny bygget som dock är väldigt
+* likt föregående uppgift. Den var även till en väldigt bra hjälp när jag använde hashmaps (& nested) då jag inte
+* är bra på det alls och behövde ganska mycket hjälp och förslag på hur man kan/ska skriva ut metoderna
+* i expenseStorage/incomeStorage. */
+
+
 public class Main {
     private static ExpenseStorage expenseStorage = new ExpenseStorage();
     private static IncomeStorage incomeStorage = new IncomeStorage();
-    //Helena. vrf måste dom va static?
-    //används bara i denna klassen?
+    //Fungerade endast som static?
+
+
     public static void main(String[] args){
         Scanner scanner = new Scanner(System.in);
 
@@ -138,70 +145,10 @@ public class Main {
         incomeStorage.saveFile("income.json");
         scanner.close();
 
-//        private static void addIncome(){
-//            System.out.println("Enter amount: ");
-//            double amount = scanner.nextDouble();
-//            scanner.nextLine();
-//            System.out.println("Enter date (YYYY-MM-DD): ");
-//            scanner.nextLine();
-//            System.out.println("Enter category: ");
-//            String category = scanner.nextLine(); //ENUM
-//            Income income = new Income(amount, date, EIncomeCategory.valueOf(category));
-//            incomeStorage.addIncome(1, income);
-//            System.out.println("Income of " + income + " added to budget.");
-//        }
-//        private static void addExpense(){
-//            System.out.println(" amount: ");
-//            double amount = scanner.nextDouble();
-//            scanner.nextLine();
-//            System.out.println("YYYY-MM-DD: ");
-//            scanner.nextLine();
-//            System.out.println("Enter category: ");
-//            String category = scanner.nextLine();
-//            Expense expense = new Expense(amount, date, EExpenseCategory.valueOf(category));
-//            System.out.println("Expense of " + expense + " added to budget.");
-//        }
-//        private void listIncome(){
-//            System.out.println("Here is the list of your incomes: " + incomeStorage.listIncome(0));
-//        }
-//        private void listExpense(){
-//            System.out.println("Here is the list of your expenses" + expenseStorage.listExpense(0));
-//        }
-//        private void removeIncome(){
-//            System.out.println("Enter IncomeID to remove income: ");
-//            int incomeID = scanner.nextInt();
-//            scanner.nextLine();
-//            if (incomeStorage.removeIncome(0, incomeID);)
-//                System.out.println("Income of " + incomeStorage + " removed from budget.");
-//        }else{
-//            System.out.println("Income not found");
-//        }
-//        private void removeExpense(){
-//            System.out.println("Enter ExpenseID to remove expense: ");
-//            int expenseID = scanner.nextInt();
-//            scanner.nextLine();
-//            if (expenseStorage.removeExpense(0, expenseID);)
-//                System.out.println("Expense of " + expenseStorage + " removed from budget.");
-//        }   else {
-//            System.out.println("Expense not found");
-//        }
-//        private void editIncome(){
-//
-//        }
-//        private void editExpense(){
-//
-//        }
-//        private void budget(){
-//        double totalIncome = incomeStorage.listIncome(0);
-//        double totalExpense = expenseStorage.listExpense(0);
-//        double budget = totalIncome - totalExpense;
-//        }
 
 
 
-
-
-
+//hårdkodning från innan jag hade min meny.
 //        ExpenseStorage expenseStorage = new ExpenseStorage();
 //        IncomeStorage incomeStorage = new IncomeStorage();
 //
